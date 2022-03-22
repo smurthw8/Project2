@@ -7,9 +7,6 @@ namespace TempleTourGenius.Models
     {
         [Key]
         [Required]
-        public int AppoitmentId { get; set; }
-
-        [Required]
         public DateTime Time { get; set; }
 
         [Required]

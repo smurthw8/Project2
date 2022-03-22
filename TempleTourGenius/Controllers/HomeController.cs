@@ -11,6 +11,12 @@ namespace TempleTourGenius.Controllers
 {
     public class HomeController : Controller
     {
+        private SignupDBContext _slots { get; set; }
+
+        public HomeController(SignupDBContext someName)
+        {
+            _slots = someName;
+        }
 
         public IActionResult Index()
         {
@@ -19,7 +25,13 @@ namespace TempleTourGenius.Controllers
 
         public IActionResult Signup()
         {
-            return View();
+
+            var slots = _slots.Timeslots
+                .Where(x => x.Available == true)
+                .OrderBy(x => x.Time)
+                .ToList();
+
+            return View(slots);
         }
 
 
