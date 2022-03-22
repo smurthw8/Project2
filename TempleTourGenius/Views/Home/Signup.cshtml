@@ -1,9 +1,22 @@
 ﻿@{
     ViewData["Title"] = "Sign Up for an Apartment";
+    DateTime date =  DateTime.Now.Date.AddDays(-1);
 }
 
-@model Timeslots;
+@model List<Timeslots>;
 
 <h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+
+@foreach (var t in Model)
+{
+    if(t.Time.Date > date)
+    {
+        <h3>@t.Time.DayOfWeek, @t.Time.Date.ToString("M")</h3>
+    }
+    if (t.Available == true)
+    {
+        <button asp-controller="Home" asp-action="Form" asp-route-time="@t.Time">@(t.Time.Hour < 13 ? t.Time.Hour : t.Time.Hour - 12) @(t.Time.Hour < 12 ? "am" : "pm") </button>
+    }
+    date = t.Time.Date;
+}
