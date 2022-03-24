@@ -35,14 +35,14 @@ namespace TempleTourGenius.Controllers
             return View(slots);
         }
         [HttpGet]
-        public IActionResult Form()
+        public IActionResult Form(DateTime time)
         {
             //int timeid
             //ViewBag.TimeSlots = _slots.Timeslots.ToList();
             //var appointment = _slots.Timeslots.Single(x => x.TimeId == timeid);
             //do i need to have "Form", appointment if it's in the same view?
             //return View(appointment);
-            return View();
+            return View("Form", time);
         }
 
         [HttpPost]
@@ -55,12 +55,12 @@ namespace TempleTourGenius.Controllers
                 //_slots.Update() would I update the tour info or the timeid
 
                 //_slots.SaveChanges();
-                return RedirectToPage("/Index");
+                return RedirectToAction("Index");
             }
             else
             {
                 //add time list
-                return View("Form");
+                return View();
             }
         }
     }
