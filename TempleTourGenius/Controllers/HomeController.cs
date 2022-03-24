@@ -36,8 +36,9 @@ namespace TempleTourGenius.Controllers
         }
 
         [HttpGet]
-        public IActionResult Form(int timeid)
+        public IActionResult Form()
         {
+            //int timeid
             //ViewBag.TimeSlots = _slots.Timeslots.ToList();
             //var appointment = _slots.Timeslots.Single(x => x.TimeId == timeid);
             //do i need to have "Form", appointment if it's in the same view?
