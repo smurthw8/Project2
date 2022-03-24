@@ -62,5 +62,6 @@ namespace TempleTourGenius.Controllers
                 //add time list
                 return View("Form");
             }
+        }
     }
 }
