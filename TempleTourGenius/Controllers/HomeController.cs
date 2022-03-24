@@ -34,7 +34,6 @@ namespace TempleTourGenius.Controllers
 
             return View(slots);
         }
-
         [HttpGet]
         public IActionResult Form()
         {
@@ -63,7 +62,5 @@ namespace TempleTourGenius.Controllers
                 //add time list
                 return View("Form");
             }
-        }
-
     }
 }
