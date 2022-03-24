@@ -22,7 +22,6 @@ namespace TempleTourGenius.Models
 
         //foriegn key relationship
         //time slot field
-
         public int TimeId { get; set; }
         [BindNever]
         public Timeslots TimeSlot { get; set; }
