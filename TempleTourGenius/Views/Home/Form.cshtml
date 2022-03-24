@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Tour Form";
+}
+@model Tour
+
+
+<div>
+
+    <h1>@ViewData["Title"]</h1>
+
+    <p>Please enter your details, and well get your tour booked.</p>
+
+    <form method="post" asp-controller="Home" asp-action="TourForm">
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="TimeSlot">Time Slot</label>
+            @*<div>@Model.TimeSlot</div>*@
+        </div>
+
+        <div class="form-group">
+            <label asp-for="GroupName">Group Name</label>
+            <input asp-for="GroupName" class="form-control" />
+        </div> 
+
+        <div class="form-group">
+            <label asp-for="GroupSize">Group Size</label>
+            <input asp-for="GroupSize" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email">Email Address</label>
+            <input asp-for="Email" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Phone">Phone Number</label>
+            <input asp-for="Phone" class="form-control" />
+        </div>
+
+    </form>
+
+    <br />
+    <div>
+        <input class="btn btn-primary" type="submit" value="Submit Appointment" />
+    </div>
+</div>
