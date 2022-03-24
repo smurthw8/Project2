@@ -2,7 +2,7 @@
     ViewData["Title"] = "Appointment List";
 }
 
-@model List<Timeslots>
+@model List<Tour>
 
 @*Not sure what type of list is supposed to go above. I think this is right...*@
 
@@ -17,7 +17,7 @@
         </tr>
 
     </thead>
-    @* This comment can be removed once we have our model stuff done and this actually means something.
+
         <tbody>
             @foreach (var x in Model)
                 {
@@ -25,11 +25,11 @@
                 <td>@x.GroupName</td>
                 <td>@x.GroupSize</td>
                 <td>@x.Email</td>
-                <td>@x.PhoneNumber</td>
+                <td>@x.Phone</td>
             </tr>
                 }
 
         </tbody>
-    *@
+
 
 </table>
