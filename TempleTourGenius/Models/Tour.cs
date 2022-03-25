@@ -10,7 +10,6 @@ namespace TempleTourGenius.Models
     public partial class Tour
     {
         [Key]
-        [BindNever]
         public int TourId { get; set; }
         [Required(ErrorMessage = "Please enter a group name")]
         public string GroupName { get; set; }
@@ -18,12 +17,9 @@ namespace TempleTourGenius.Models
         public int GroupSize { get; set; } 
         [Required(ErrorMessage = "Please enter an email address")]
         public string Email { get; set; } 
-        public int Phone { get; set; }
-
-        //foriegn key relationship
-        //time slot field
+        public string Phone { get; set; }
+        [Required]
         public int TimeId { get; set; }
-        [BindNever]
         public Timeslots TimeSlot { get; set; }
         
     }
