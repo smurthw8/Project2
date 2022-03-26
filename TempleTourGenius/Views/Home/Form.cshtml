@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Tour Form";
 }
-@model Tour
+@model TempleTourGenius.Models.Tour
 
 
 <div>
@@ -15,7 +15,11 @@
 
         <div class="form-group">
             <label asp-for="TimeSlot">Time Slot</label>
-            <div>@Model.TimeSlot</div>
+            @foreach (Timeslots t in ViewBag.TimeSlots)
+            {
+                <br />
+                <label asp-for="@t.TimeId">@t.Time</label>
+            }
         </div>
 
         <div class="form-group">
