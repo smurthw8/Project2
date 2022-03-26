@@ -35,12 +35,13 @@ namespace TempleTourGenius.Controllers
             return View(slots);
         }
         [HttpGet]
-        public IActionResult Form(DateTime selectedTime)
+        public IActionResult Form(int Timeid)
         {
             ViewBag.TimeSlots = _slots.Timeslots.ToList();
-            var appointment = _slots.Timeslots.SingleOrDefault(x => x.Time == selectedTime);
+            var appId = _slots.Timeslots.SingleOrDefault(x => x.TimeId == Timeid);
+            //var appointment = _slots.Timeslots.SingleOrDefault(x => x.Time == selectedTime);
             //do i need to have "Form", appointment if it's in the same view?
-            return View(appointment);
+            return View(appId);
             //return View();
         }
 
@@ -50,7 +51,7 @@ namespace TempleTourGenius.Controllers
             if (ModelState.IsValid)
             {
                 //code reference to code that saves to database
-                //_slots.Add(tr); ??
+                //_slots.Add(tr); 
                 //_slots.Update() would I update the tour info or the timeid
 
                 //_slots.SaveChanges();

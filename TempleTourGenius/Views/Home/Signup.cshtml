@@ -16,7 +16,7 @@
     }
     if (t.Available == true)
     {
-        <a class="btn btn-primary" asp-controller="Home" asp-action="Form" asp-route-time="@t.Time">@(t.Time.Hour < 13 ? t.Time.Hour : t.Time.Hour - 12) @(t.Time.Hour < 12 ? "am" : "pm") </a>
+        <a class="btn btn-primary" asp-controller="Home" asp-action="Form" asp-route-time="@t.TimeId">@(t.Time.Hour < 13 ? t.Time.Hour : t.Time.Hour - 12) @(t.Time.Hour < 12 ? "am" : "pm") </a>
     }
     date = t.Time.Date;
 }
