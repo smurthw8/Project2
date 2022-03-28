@@ -18,7 +18,7 @@ namespace TempleTourGenius.Models
         public int GroupSize { get; set; } 
         [Required(ErrorMessage = "Please enter an email address")]
         public string Email { get; set; } 
-        public int Phone { get; set; }
+        public long Phone { get; set; }
 
         //foriegn key relationship
         //time slot field
