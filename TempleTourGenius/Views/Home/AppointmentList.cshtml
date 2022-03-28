@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Appointment List";
+}
+
+@model List<Timeslots>
+
+@*Not sure what type of list is supposed to go above. I think this is right...*@
+
+<table class="table table-bordered table-striped">
+
+    <thead class="font-weight-bold">
+        <tr>
+            <td>Group Name</td>
+            <td>Group Size</td>
+            <td>Email</td>
+            <td>Phone Number</td>
+        </tr>
+
+    </thead>
+    @* This comment can be removed once we have our model stuff done and this actually means something.
+        <tbody>
+            @foreach (var x in Model)
+                {
+            <tr>
+                <td>@x.GroupName</td>
+                <td>@x.GroupSize</td>
+                <td>@x.Email</td>
+                <td>@x.PhoneNumber</td>
+            </tr>
+                }
+
+        </tbody>
+    *@
+
+</table>

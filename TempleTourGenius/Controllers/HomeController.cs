@@ -23,6 +23,7 @@ namespace TempleTourGenius.Controllers
             return View();
         }
 
+        
         public IActionResult Signup()
         {
 
@@ -33,7 +34,34 @@ namespace TempleTourGenius.Controllers
 
             return View(slots);
         }
+        [HttpGet]
+        public IActionResult Form(int time)
+        {
+            ViewBag.TimeSlots = _slots.Timeslots.Where(x => x.TimeId == time).ToList();
+        
+            return View();
+        }
 
+        [HttpPost]
+        public IActionResult Form(Tour tr)
+        {
+            if (ModelState.IsValid)
+            {
+                //code reference to code that saves to database
+                Timeslots ts = _slots.Timeslots.Where(x => x.TimeId == tr.TimeId).FirstOrDefault();
 
+                ts.Available = false;
+
+                _slots.Add(tr);
+
+                _slots.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                //add time list
+                return View("Form");
+            }
+        }
     }
 }
