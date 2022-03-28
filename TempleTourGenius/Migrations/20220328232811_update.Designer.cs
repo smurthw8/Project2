@@ -9,8 +9,8 @@ using TempleTourGenius.Models;
 namespace TempleTourGenius.Migrations
 {
     [DbContext(typeof(SignupDBContext))]
-    [Migration("20220328212511_update2")]
-    partial class update2
+    [Migration("20220328232811_update")]
+    partial class update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -594,8 +594,8 @@ namespace TempleTourGenius.Migrations
                     b.Property<int>("GroupSize")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("Phone")
-                        .HasColumnType("INTEGER");
+                    b.Property<string>("Phone")
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("TimeId")
                         .HasColumnType("INTEGER");
@@ -616,7 +616,7 @@ namespace TempleTourGenius.Migrations
                             Email = "testnderson@test.com",
                             GroupName = "Andersons",
                             GroupSize = 5,
-                            Phone = 8015551234L,
+                            Phone = "8015551234",
                             TimeId = 1
                         });
                 });
