@@ -24,7 +24,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\img\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Microsoft.EntityFrameworkCore.Tools" />

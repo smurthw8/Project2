@@ -132,7 +132,7 @@ namespace TempleTourGenius.Models
                     GroupName = "Andersons",
                     GroupSize = 5,
                     Email = "testnderson@test.com",
-                    Phone = 8015551234,
+                    Phone = "8015551234",
                     TimeId = 1,
                 }
             );
