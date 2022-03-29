@@ -29,7 +29,9 @@ namespace TempleTourGenius.Controllers
             int max = _slots.Timeslots.Max(p => p.TimeId);
             //DateTime last = _slots.Timeslots.Max(x => x.Time);
             DateTime today = DateTime.Now.AddDays(-1).Date;
-            for (int i = 0; i < 10; i++)
+            int monthadd = today.AddMonths(3).Month;
+            int i = 0;
+            while (today.Month <= monthadd)
             {
                 today = today.AddDays(1);
                 if (_slots.Timeslots.Where(c => c.Time.Date == today).Count() == 0)
@@ -42,6 +44,7 @@ namespace TempleTourGenius.Controllers
                         _slots.SaveChanges();
                     }
                 }
+                i += 1;
 
             }
             DateTime now = DateTime.Now.Date;
