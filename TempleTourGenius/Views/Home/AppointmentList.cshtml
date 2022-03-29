@@ -4,7 +4,6 @@
 
 @model List<Tour>
 
-@*Not sure what type of list is supposed to go above. I think this is right...*@
 
 <table class="table table-bordered table-striped">
 
@@ -26,6 +25,8 @@
                 <td>@x.GroupSize</td>
                 <td>@x.Email</td>
                 <td>@x.Phone</td>
+                <td><button class="btn btn-warning btn-sm">Edit</button></td> @*Austin, you can add in your functions to connect to these buttons and then I think we're good to go!'*@
+                <td><button class="btn btn-danger btn-sm">Delete</button></td>
             </tr>
                 }
 

@@ -65,9 +65,10 @@ namespace TempleTourGenius.Controllers
         }
         public IActionResult AppointmentList()
         {
-            var timeslots = _slots.Timeslots
+            var tour = _slots.TourInfo
                 .ToList();
-            return View(timeslots);
+            return View(tour);
+
         }
     }
 }
