@@ -23,17 +23,36 @@ namespace TempleTourGenius.Controllers
             return View();
         }
 
-        
         public IActionResult Signup()
         {
 
+            int max = _slots.Timeslots.Max(p => p.TimeId);
+            //DateTime last = _slots.Timeslots.Max(x => x.Time);
+            DateTime today = DateTime.Now.AddDays(-1).Date;
+            for (int i = 0; i < 10; i++)
+            {
+                today = today.AddDays(1);
+                if (_slots.Timeslots.Where(c => c.Time.Date == today).Count() == 0)
+                {
+                    for (int j = 8; j < 21; j++)
+                    {
+                        max = max + 1;
+                        Timeslots t = new Timeslots { TimeId = max, Time = today.AddHours(j), Available = true };
+                        _slots.Add(t);
+                        _slots.SaveChanges();
+                    }
+                }
+
+            }
+            DateTime now = DateTime.Now.Date;
             var slots = _slots.Timeslots
-                .Where(x => x.Available == true)
+                .Where(x => x.Time >= now)
                 .OrderBy(x => x.Time)
                 .ToList();
 
             return View(slots);
         }
+
         [HttpGet]
         public IActionResult Form(int time)
         {
