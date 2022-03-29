@@ -89,6 +89,11 @@ namespace TempleTourGenius.Controllers
             return View(tour);
 
         }
+
+        public IActionResult Confirm_Delete()
+        {
+            return View();
+        }
     }
 }
 
