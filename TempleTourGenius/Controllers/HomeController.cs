@@ -64,10 +64,11 @@ namespace TempleTourGenius.Controllers
         [HttpPost]
         public IActionResult Form(Tour tr)
         {
+            Timeslots ts = _slots.Timeslots.Where(x => x.TimeId == tr.TimeId).FirstOrDefault();
+
             if (ModelState.IsValid)
             {
                 //code reference to code that saves to database
-                Timeslots ts = _slots.Timeslots.Where(x => x.TimeId == tr.TimeId).FirstOrDefault();
 
                 ts.Available = false;
 
@@ -79,6 +80,7 @@ namespace TempleTourGenius.Controllers
             else
             {
                 //add time list
+                int time = tr.TimeId;
                 return View("Form");
             }
         }
