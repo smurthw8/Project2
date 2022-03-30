@@ -60,17 +60,18 @@ namespace TempleTourGenius.Controllers
         public IActionResult Form(int time)
         {
             ViewBag.TimeSlots = _slots.Timeslots.Where(x => x.TimeId == time).ToList();
-        
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Form(Tour tr)
         {
+            Timeslots ts = _slots.Timeslots.Where(x => x.TimeId == tr.TimeId).FirstOrDefault();
+
             if (ModelState.IsValid)
             {
                 //code reference to code that saves to database
-                Timeslots ts = _slots.Timeslots.Where(x => x.TimeId == tr.TimeId).FirstOrDefault();
 
                 ts.Available = false;
 
@@ -82,6 +83,7 @@ namespace TempleTourGenius.Controllers
             else
             {
                 //add time list
+                int time = tr.TimeId;
                 return View("Form");
             }
         }
@@ -91,6 +93,46 @@ namespace TempleTourGenius.Controllers
                 .ToList();
             return View(tour);
 
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int tourid, int timeid)
+        {
+            ViewBag.TimeSlots = _slots.Timeslots.Where(x => x.TimeId == timeid).ToList();
+
+            var tourInfo = _slots.TourInfo.Single(x => x.TourId == tourid);
+
+            return View("Edit", tourInfo);
+        }
+
+        [HttpPost]
+        public IActionResult Edit (Tour tr)
+        {
+            _slots.Update(tr);
+            _slots.SaveChanges();
+
+            return RedirectToAction("AppointmentList");
+        }
+
+        [HttpGet]
+        public IActionResult Confirm_Delete (int tourid)
+        {
+            var appointment = _slots.TourInfo.Single(x => x.TourId == tourid);
+
+            return View(appointment);
+        }
+
+        [HttpPost]
+        public IActionResult Confirm_Delete(Tour tr)
+        {
+            Timeslots ts = _slots.Timeslots.Where(x => x.TimeId == tr.TimeId).FirstOrDefault();
+
+            ts.Available = true;
+
+            _slots.TourInfo.Remove(tr);
+            _slots.SaveChanges();
+
+            return RedirectToAction("AppointmentList");
         }
     }
 }

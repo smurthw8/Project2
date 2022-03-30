@@ -21,7 +21,9 @@ namespace TempleTourGenius.Models
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [DataType(DataType.PhoneNumber)]
-        public string Phone { get; set; }
+        public string Phone { get; set; }      
+
+
         [Required]
         public int TimeId { get; set; }
         public Timeslots TimeSlot { get; set; }
