@@ -90,16 +90,29 @@ namespace TempleTourGenius.Controllers
 
         }
 
-        //[HttpGet]
-        //public IActionResult Edit (int tourid)
-        //{
-        //    ViewBag.TimeSlots = _slots.TourInfo.ToList();
+        [HttpGet]
+        public IActionResult Edit(int tourid, int timeid)
+        {
+            ViewBag.TimeSlots = _slots.Timeslots.Where(x => x.TimeId == timeid).ToList();
 
-        //    var tourInfo = _slots
-        //}
+            var tourInfo = _slots.TourInfo.Single(x => x.TourId == tourid);
+
+            return View("Edit", tourInfo);
+        }
+
+        [HttpPost]
+        public IActionResult Edit (Tour tr)
+        {
+            Timeslots ts = _slots.Timeslots.Where(x => x.TimeId == tr.TimeId).FirstOrDefault();
+
+            _slots.Update(tr);
+            _slots.SaveChanges();
+
+            return RedirectToAction("AppointmentList");
+        }
 
         [HttpGet]
-        public IActionResult Confirm_Delete (int tourid)
+        public IActionResult Confirm_Delete (int tourid, int timeid)
         {
             var appointment = _slots.TourInfo.Single(x => x.TourId == tourid);
 

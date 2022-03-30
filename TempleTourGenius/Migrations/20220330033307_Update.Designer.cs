@@ -9,7 +9,7 @@ using TempleTourGenius.Models;
 namespace TempleTourGenius.Migrations
 {
     [DbContext(typeof(SignupDBContext))]
-    [Migration("20220330013823_Update")]
+    [Migration("20220330033307_Update")]
     partial class Update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

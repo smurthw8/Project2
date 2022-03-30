@@ -8,7 +8,7 @@
 
     <h1>@ViewData["Title"]</h1>
 
-    <p>Please enter your details, and well get your tour booked.</p>
+    <h3>Please enter your details, and we'll get your tour booked.</h3>
 
     <form method="post" asp-controller="Home" asp-action="Form">
         <div asp-validation-summary="All" class="text-danger"></div>
@@ -45,6 +45,7 @@
         <br />
         <div>
             <input class="btn btn-primary" type="submit" value="Submit Appointment" />
+            <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
         </div>
     </form>
 </div>
