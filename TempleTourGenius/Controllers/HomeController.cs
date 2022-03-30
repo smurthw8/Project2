@@ -103,8 +103,6 @@ namespace TempleTourGenius.Controllers
         [HttpPost]
         public IActionResult Edit (Tour tr)
         {
-            Timeslots ts = _slots.Timeslots.Where(x => x.TimeId == tr.TimeId).FirstOrDefault();
-
             _slots.Update(tr);
             _slots.SaveChanges();
 
@@ -112,7 +110,7 @@ namespace TempleTourGenius.Controllers
         }
 
         [HttpGet]
-        public IActionResult Confirm_Delete (int tourid, int timeid)
+        public IActionResult Confirm_Delete (int tourid)
         {
             var appointment = _slots.TourInfo.Single(x => x.TourId == tourid);
 

@@ -43,4 +43,5 @@
         <input class="btn btn-primary" type="submit" value="Submit Appointment" />
         <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="AppointmentList">Cancel</a>
     </div>
+    <input asp-for="TourId" type="hidden" value="@Model.TourId" />
 </form>
