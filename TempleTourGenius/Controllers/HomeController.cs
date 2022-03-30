@@ -57,7 +57,7 @@ namespace TempleTourGenius.Controllers
         public IActionResult Form(int time)
         {
             ViewBag.TimeSlots = _slots.Timeslots.Where(x => x.TimeId == time).ToList();
-        
+
             return View();
         }
 
@@ -90,9 +90,33 @@ namespace TempleTourGenius.Controllers
 
         }
 
-        public IActionResult Confirm_Delete()
+        //[HttpGet]
+        //public IActionResult Edit (int tourid)
+        //{
+        //    ViewBag.TimeSlots = _slots.TourInfo.ToList();
+
+        //    var tourInfo = _slots
+        //}
+
+        [HttpGet]
+        public IActionResult Confirm_Delete (int tourid)
         {
-            return View();
+            var appointment = _slots.TourInfo.Single(x => x.TourId == tourid);
+
+            return View(appointment);
+        }
+
+        [HttpPost]
+        public IActionResult Confirm_Delete(Tour tr)
+        {
+            Timeslots ts = _slots.Timeslots.Where(x => x.TimeId == tr.TimeId).FirstOrDefault();
+
+            ts.Available = true;
+
+            _slots.TourInfo.Remove(tr);
+            _slots.SaveChanges();
+
+            return RedirectToAction("AppointmentList");
         }
     }
 }
